@@ -48,34 +48,34 @@ typeset -gA Zinit_Annex_Unscope_Mappings
 
 Zinit_Annex_Unscope_Mappings=(
     # zdharma/null
-    "1.   null"				"zdharma/null 0"
+    "1.   null"				"z-shell/null 0"
 
     # z-a-as-monitor
-    "2.   z-a-as-monitor"		"zinit-zsh/z-a-as-monitor 0"
-    "3.   as-monitor"			"zinit-zsh/z-a-as-monitor 0"
-    "4.   monitor"			"zinit-zsh/z-a-as-monitor 0"
+    "2.   z-a-as-monitor"		"z-shell/z-a-as-monitor 0"
+    "3.   as-monitor"			"z-shell/z-a-as-monitor 0"
+    "4.   monitor"			"z-shell/z-a-as-monitor 0"
                                          
     # z-a-patch-dl                     
-    "5.   z-a-patch-dl"			"zinit-zsh/z-a-patch-dl 0"
-    "6.   patch-dl"			"zinit-zsh/z-a-patch-dl 0"
+    "5.   z-a-patch-dl"			"z-shell/z-a-patch-dl 0"
+    "6.   patch-dl"			"z-shell/z-a-patch-dl 0"
                                          
     # z-a-submods                     
-    "7.   z-a-submods"			"zinit-zsh/z-a-submods 0"
-    "8.   submods"			"zinit-zsh/z-a-submods 0"
+    "7.   z-a-submods"			"z-shell/z-a-submods 0"
+    "8.   submods"			"z-shell/z-a-submods 0"
 
     # z-a-rust                         
-    "9.   z-a-rust"			"zinit-zsh/z-a-rust 0"
-    "10.  rust"				"zinit-zsh/z-a-rust 0"
+    "9.   z-a-rust"			"z-shell/z-a-rust 0"
+    "10.  rust"				"z-shell/z-a-rust 0"
                                          
     # z-a-bin-gem-node                 
-    "11.   z-a-bin-gem-node"		"zinit-zsh/z-a-bin-gem-node 0"
-    "12.   bin-gem-node"		"zinit-zsh/z-a-bin-gem-node 0"
-    "13.   bgn"				"zinit-zsh/z-a-bin-gem-node 0"
+    "11.   z-a-bin-gem-node"		"z-shell/z-a-bin-gem-node 0"
+    "12.   bin-gem-node"		"z-shell/z-a-bin-gem-node 0"
+    "13.   bgn"				"z-shell/z-a-bin-gem-node 0"
 
     # zinit-console                 
-    "14.   zinit-console"		"zinit-zsh/zinit-console 0"
-    "15.   console"			"zinit-zsh/zinit-console 0"
-    "16.   consolette"			"zinit-zsh/zinit-console 0"
+    "14.   zinit-console"		"z-shell/zinit-console 0"
+    "15.   console"			"z-shell/zinit-console 0"
+    "16.   consolette"			"z-shell/zinit-console 0"
                                 
     # Prezto archive
     "17.  archive"			"PZTM::archive 1"
@@ -94,29 +94,29 @@ Zinit_Annex_Unscope_Mappings=(
     "24.  util"				"PZTM::utility 1"
 
     # fast-syntax-highlighting  
-    "25.  fast-syntax-highlighting"	"zdharma/fast-syntax-highlighting 0"
-    "26.  f-sy-h"		        "zdharma/fast-syntax-highlighting 0"
-    "27.  fsh"				"zdharma/fast-syntax-highlighting 0"
+    "25.  fast-syntax-highlighting"	"z-shell/fast-syntax-highlighting 0"
+    "26.  f-sy-h"		        "z-shell/fast-syntax-highlighting 0"
+    "27.  fsh"				"z-shell/fast-syntax-highlighting 0"
 
     # history-search-multi-word
-    "28.  history-search-multi-word"	"zdharma/history-search-multi-word 0"
-    "29.  hsmw"				"zdharma/history-search-multi-word 0"
+    "28.  history-search-multi-word"	"z-shell/history-search-multi-word 0"
+    "29.  hsmw"				"z-shell/history-search-multi-word 0"
 
     # ZUI
-    "30.  zui"				"zdharma/zui 0"
-    "31.  ZUI"				"zdharma/zui 0"
+    "30.  zui"				"z-shell/zui 0"
+    "31.  ZUI"				"z-shell/zui 0"
 
     # Zconvey
-    "32.  zconvey"			"zdharma/zconvey 0"
-    "33.  zconv"			"zdharma/zconvey 0"
+    "32.  zconvey"			"z-shell/zconvey 0"
+    "33.  zconv"			"z-shell/zconvey 0"
 
     # Zbrowse
-    "34.  zbrowse"			"zdharma/zbrowse 0"
+    "34.  zbrowse"			"z-shell/zbrowse 0"
 
     # zzcomplete
-    "35.  zzcomplete"			"zdharma/zzcomplete 0"
-    "36.  zzcomp"			"zdharma/zzcomplete 0"
-    "37.  zzcom"			"zdharma/zzcomplete 0"
+    "35.  zzcomplete"			"z-shell/zzcomplete 0"
+    "36.  zzcomp"			"z-shell/zzcomplete 0"
+    "37.  zzcom"			"z-shell/zzcomplete 0"
 
     # zsh-autosuggestions
     "38.  zsh-autosuggestions"		"zsh-users/zsh-autosuggestions 0"
