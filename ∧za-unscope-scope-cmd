@@ -1,0 +1,130 @@
+#!/usr/bin/env zsh
+# -*- mode: sh; sh-indentation: 4; sh-basic-offset: 4; indent-tabs-mode: nil;  -*-
+
+# Copyright (c) 2020 Sebastian Gniazdowski
+# License: MIT
+
+∧za-unscope-scope-cmd() {
+    # Set the base and typically useful options.
+    builtin emulate -LR zsh
+    builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
+
+    (( $+reply && $+REPLY )) || unsetopt warncreateglobal
+
+    autoload -Uz is-at-least
+    local is_58
+    is-at-least 5.8 && is_58=1
+
+    integer retval
+
+    [[ $1 == scope ]] && { shift; integer eas_scope=1; }
+    integer ibdebug_ice=$+ICE[debug]
+
+    # -D - clear out the recognized options
+    # -E - allow mixing of options and non-options
+    # -M - allow private arrays for the options
+    #
+    # The options are:
+    # --with/--mod/-m/--use – to pass the desired module(s)
+    local -a help no_api reply_only msg type list
+    zparseopts -D -E -M ${is_58:+} -no-api=no_api n=no_api \
+        -reply-ony=reply_only r=reply_only -msg=msg m=msg \
+        -type=type t=type h=help -help=help -list=list l=list || retval=1
+        if [[ $retval -gt 0 || $1 = -* ]] {
+            +zinit-message "{nl}{error}unscope annex: {msg}Incorrect options" \
+                "given${${(M)1:#-*}:+ "(bad option: {ehi}$1{rst}{msg})"}." \
+                "Usage:{rst}{nl}"
+            help=( -h ) retval=1
+        }
+
+    local id=${${1#@}%%(///|//|/)}
+    if [[ -z $id && ${#help} -eq 0 && ${#list} -eq 0 ]] {
+        +zinit-message "{ehi}unscope annex:{rst}{msg} Missing the ID to" \
+            "(un)scope. Usage:{rst}{nl}"
+        help=( -h ) retval=1
+    }
+
+    # --help/-h
+    if (( ${#help} )) {
+        ∧za-unscope-scope-cmd-help-handler
+        return retval
+    }
+
+    # --list/-l
+    if (( ${#list} )) {
+        .za-unscope-list-mappings
+        return $?
+    }
+
+    integer ibexisted
+    local new_teleid_data
+    local -a reply
+    if .zinit-get-object-path AUTO $id; then
+        ibexisted=1
+        { new_teleid_data="$(<$REPLY/._zinit/dynamic-unscope)" } 2>/dev/null
+    fi
+
+    # No scoped ID found on disk, because there isn't such plugin downloaded?
+    # Then search further in the static mappings and possibly via GH-API.
+    if [[ -z $new_teleid_data && $ibexisted -eq 0 ]] {
+        # Enable all messages like if the debug ice was given
+        # for a new plugin installation — with the small exception
+        # on the additional GH-API messages — they'll be shown
+        # only when not called as `zinit scope …' unless the
+        # -m `scope'-option will be given — see the invocation of
+        # .za-scope-dynamic invocation below.
+        #
+        # Note: The messages are success-only, i.e.: no failure messages.
+        integer ibshow_messages=1
+
+        new_teleid_data=${(v)Zinit_Annex_Unscope_Mappings[(i)<->. ##$id]}
+        if [[ -n $new_teleid_data ]] {
+            integer from_static=1
+        } elif (( !${#no_api} )) {
+            .za-scope-dynamic ${${(M)${:-${#msg}${${eas_scope:+0}:-$ibshow_messages}$ibdebug_ice}:#000}:+-q} "$id"
+            if (( 0 == status )) {
+                new_teleid_data=$REPLY\ 0
+                (( ${+ICE} )) && ICE[dynamic-unscope]=$REPLY\ 0
+                integer from_dynamic=1
+            }
+        }
+    } else {
+        [[ -n $new_teleid_data ]] && integer from_disk=1
+    }
+
+    if (( !${#reply_only} )) {
+        if [[ -n $new_teleid_data ]] {
+            (($+functions[.zinit-two-paths])) || builtin source $ZINIT[BIN_DIR]/zinit-side.zsh
+
+            local -a object_data
+            object_data=( "${(@Q)${(@z)new_teleid_data}}" )
+            .zinit-any-colorify-as-uspl2 "$object_data[1]"
+            (( from_dynamic )) && local msg_bit=" ({term}GH-API{msg})"
+            (( from_disk )) && local msg_bit=" (stored {term}GH-API{msg})"
+            (( from_static )) && local msg_bit=" ({term}static map{msg})"
+
+            +zinit-message "{pre}unscope annex: {msg}The key{ehi}:{rst}" \
+                "{data}$id{msg} matched$msg_bit to{ehi}:{rst}" \
+                "$REPLY{msg}.{rst}"
+        } else {
+            +zinit-message "{pre}unscope annex: {msg}Didn't find any match" \
+                    "for the given key{ehi}:{rst} {data}$id{msg}.{rst}"
+        }
+    }
+
+    # Enable the messages in the possible outer
+    # caller (i.e.: the before-load hook).
+    if (( ibexisted == 0 )) {
+        # Set the flag for the possible outer function
+        Zinit_Annex_Unscope[enable-output]=1
+    } else {
+        # Clear the flag for the possible outer function
+        # (to not have it propagated after a direct call).
+        Zinit_Annex_Unscope[enable-output]=0
+    }
+
+    REPLY=${${type:+$new_teleid_data}:-${new_teleid_data%%\ ##<->}}
+    [[ -n $REPLY ]]
+}
+
+# vim:ft=zsh:sw=4:sts=4:et:

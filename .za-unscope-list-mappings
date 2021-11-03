@@ -1,0 +1,30 @@
+# -*- mode: sh; sh-indentation: 4; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# Copyright (c) 2020 Sebastian Gniazdowski
+
+.za-unscope-list-mappings() {
+    builtin emulate -LR zsh
+    builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
+
+    local -a keys
+    keys=( ${(kon)Zinit_Annex_Unscope_Mappings[@]} )
+
+    if (( !${#keys} )) {
+        +zinit-message "{ehi}unscope annex:{rst}{msg} No mappings found." \
+                "Is the plugin correctly loaded? (Missing hash variable{ehi}:" \
+                "{rst}{var}\$Zinit_Annex_Unscope_Mappings{msg}).{rst}"
+        return 1
+    }
+
+    +zinit-message "{p}#{rst}     {obj2}${(r:21:: :):-Short Name}{rst}" \
+        "{txt}Full (Scoped) Plugin ID{rst}"
+    local key
+    for key ( $keys ) {
+        +zinit-message "{meta}${(M)key##<->.[[:space:]]##}" \
+                "{data}${(r:17:: :)${key##<->.[[:space:]]##}}" \
+                "{ehi}→{rst}  " \
+                "{msg}${Zinit_Annex_Unscope_Mappings[$key]% <->}{rst}"
+
+    }
+}
+
+# vim:ft=zsh:tw=80:sw=4:sts=4:et

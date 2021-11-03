@@ -1,0 +1,43 @@
+#!/usr/bin/env zsh
+# -*- mode: sh; sh-indentation: 4; sh-basic-offset: 4; indent-tabs-mode: nil;  -*-
+
+# Copyright 2020 Sebastian Gniazdowski
+# License: MIT
+
+.za-scope-dynamic() {
+    builtin emulate -LR zsh
+    builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
+
+    (( $+reply && $+REPLY )) || unsetopt warncreateglobal
+
+    autoload -Uz is-at-least
+    local is_58
+    is-at-least 5.8 && is_58=1
+
+    REPLY=
+
+    local -a quiet
+    zparseopts -D -E -M ${is_58:+-F} -quiet=quiet q=quiet || return 1
+
+    local name=$1 forks id
+    local -a match mbegin mend
+
+    (( $+functions[.zinit-two-paths] )) || builtin source $ZINIT[BIN_DIR]/zinit-side.zsh
+
+    reply=( ${(f)"$($Zinit_Annex_Unscope[repo-dir]/ghquery "$name")"} )
+    if [[ -n $reply && ${#reply} -gt 0 ]] {
+	if [[ $reply[1] == (#b)([0-9]##):\ (*) ]] {
+	    forks=$match[1] id=$match[2]
+	    .zinit-any-colorify-as-uspl2 "$id"
+	    (( ${#quiet} )) || +zinit-message "{pre}unscope annex: {term}GitHub-API{msg} found" \
+		    "plugin ({var}forks{msg}>={data}$forks{msg},"\
+"max.stars){ehi}:{rst} $REPLY{msg}.{rst}"
+	    REPLY=$id
+	    return 0
+	}
+    } 
+    REPLY=
+    return 1
+}
+
+# vim:ft=zsh:sw=4:sts=4:et:
