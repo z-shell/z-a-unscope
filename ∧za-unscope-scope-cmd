@@ -126,5 +126,3 @@
     REPLY=${${type:+$new_teleid_data}:-${new_teleid_data%%\ ##<->}}
     [[ -n $REPLY ]]
 }
-
-# vim:ft=zsh:sw=4:sts=4:et:

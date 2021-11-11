@@ -1,6 +1,6 @@
 # `Z-A-UNSCOPE`
 
-A Zinit-Zsh annex that allows to install plugins without specifying the GitHub
+A Z-Shell annex that allows to install plugins without specifying the GitHub
 user name. It works as follows:
 
 1. On the installation of a plugin without any slashes (/) in its name the
@@ -131,7 +131,7 @@ of short names to the full GitHub IDs. The list currently consists of:
 
 You can let me know if you would like a name to be added to the list.
 
-## Installation
+## [Zinit](https://github.com/z-shell/zinit) Install
 
 Simply load as a regular plugin, i.e.:
 
@@ -141,5 +141,3 @@ zinit light-mode for z-shell/z-a-unscope
 
 It should be done possibly early in the `zshrc`, as otherwise the preceding
 `zinit` calls will not have the unscoped IDs resolved.
-
-<!-- vim:set ft=markdown tw=79 autoindent fo+=a1n: -->

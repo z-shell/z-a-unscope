@@ -4,7 +4,7 @@
 # License MIT
 
 # Get $0 according to the Zsh Plugin Standard:
-# http://zdharma.org/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html#zero-handling
+# http://z-shell.org/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html#zero-handling
 
 0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
 0="${${(M)0:#/*}:-$PWD/$0}"
@@ -13,7 +13,7 @@ typeset -gA Zinit_Annex_Unscope
 Zinit_Annex_Unscope[0]="$0" Zinit_Annex_Unscope[repo-dir]="${0:h}"
 
 # According to the Zsh Plugin Standard:
-# http://zdharma.org/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html#std-hash
+# http://z-shell.org/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html#std-hash
 typeset -gA Plugins
 Plugins[UNSCOPE_DIR]=${0:h}
 
@@ -47,7 +47,7 @@ autoload -Uz ∧za-unscope-before-load-handler \
 typeset -gA Zinit_Annex_Unscope_Mappings
 
 Zinit_Annex_Unscope_Mappings=(
-    # zdharma/null
+    # z-shell/null
     "1.   null"				"z-shell/null 0"
 
     # z-a-as-monitor
@@ -192,5 +192,3 @@ Zinit_Annex_Unscope_Mappings=(
     "83.  completions"			"zsh-users/zsh-completions 0"
     "84.  comps"			"zsh-users/zsh-completions 0"
 )
-
-# vim:ft=zsh:tw=80:sw=4:sts=4:noet

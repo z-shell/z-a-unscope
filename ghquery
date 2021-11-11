@@ -13,7 +13,7 @@ setopt extendedglob typesetsilent warncreateglobal noshortloops rcquotes
 # Run as script? ZSH_SCRIPT is a Zsh 5.3 addition
 if [[ $0 != */ghquery || -n $ZSH_SCRIPT ]] {
     # Handle $0 according to the Zsh Plugin Standard:
-    # http://zdharma.org/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html#zero-handling
+    # http://z-shell.org/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html#zero-handling
     0=${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}
     0=${${(M)0##/*}:-$PWD/$0}
 
@@ -52,5 +52,3 @@ for forks ( 10 2 0 ) {
 }
 
 exit 1
-
-# vim:ft=zsh:tw=80:sw=4:sts=4:et:foldmarker=[[[,]]]

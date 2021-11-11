@@ -12,8 +12,9 @@
 ._zinit
 .zinit_lastupd
 
-# zdharma/zshelldoc tool's files
+# z-shell/zshelldoc tool's files
 zsdoc/data
+doc/zsdoc/data
 
 # ohmyzsh/ohmyzsh/plugins/per-directory-history plugin's files
 # (when set-up to store the history in the local directory)

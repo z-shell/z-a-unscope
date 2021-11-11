@@ -39,5 +39,3 @@
     REPLY=
     return 1
 }
-
-# vim:ft=zsh:sw=4:sts=4:et:

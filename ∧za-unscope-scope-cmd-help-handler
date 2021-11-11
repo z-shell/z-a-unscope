@@ -25,5 +25,3 @@
                 "to the {var}\$REPLY{rst}"
     return 0
 }
-
-# vim:ft=zsh:tw=80:sw=4:sts=4:et
