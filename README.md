@@ -5,6 +5,11 @@
 
 # Introduction
 
+> **[?]**
+> This repository not compatible with previous versions (zplugin, zinit).
+>
+> Please upgrade to [ZI](https://github.com/z-shell-zi)
+
 A Z-Shell [ZI](https://github.com/z-shell/zi) Annex (i.e. an extension) that allows to install plugins without specifying the GitHub
 user name. It works as follows:
 
