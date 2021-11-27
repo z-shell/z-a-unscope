@@ -1,17 +1,19 @@
-# -*- mode: sh; sh-indentation: 4; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
-# Copyright (c) 2020 Sebastian Gniazdowski
+# shellcheck shell=sh
+#
+# Copyright (c) 2019 Sebastian Gniazdowski
+# Copyright (c) 2021 Z-Shell ZI Contributors
 
 .za-unscope-list-mappings() {
     builtin emulate -LR zsh
     builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
 
     local -a keys
-    keys=( ${(kon)Zinit_Annex_Unscope_Mappings[@]} )
+    keys=( ${(kon)zi_annex_unscope_mappings[@]} )
 
     if (( !${#keys} )) {
         +zinit-message "{ehi}unscope annex:{rst}{msg} No mappings found." \
                 "Is the plugin correctly loaded? (Missing hash variable{ehi}:" \
-                "{rst}{var}\$Zinit_Annex_Unscope_Mappings{msg}).{rst}"
+                "{rst}{var}\$zi_annex_unscope_mappings{msg}).{rst}"
         return 1
     }
 
@@ -22,7 +24,7 @@
         +zinit-message "{meta}${(M)key##<->.[[:space:]]##}" \
                 "{data}${(r:17:: :)${key##<->.[[:space:]]##}}" \
                 "{ehi}→{rst}  " \
-                "{msg}${Zinit_Annex_Unscope_Mappings[$key]% <->}{rst}"
+                "{msg}${zi_annex_unscope_mappings[$key]% <->}{rst}"
 
     }
 }

@@ -1,8 +1,9 @@
 #!/usr/bin/env zsh
-# -*- mode: sh; sh-indentation: 4; sh-basic-offset: 4; indent-tabs-mode: nil;  -*-
+# shellcheck shell=sh
+# shellcheck disable=3043,2034,3003,2296,2298,1037,3006,2154,3024,1009,1073
 
-# Copyright 2020 Sebastian Gniazdowski
-# License: MIT
+# Copyright (c) 2019 Sebastian Gniazdowski
+# Copyright (c) 2021 Z-Shell ZI Contributors
 
 .za-scope-dynamic() {
     builtin emulate -LR zsh
@@ -22,20 +23,20 @@
     local name=$1 forks id
     local -a match mbegin mend
 
-    (( $+functions[.zinit-two-paths] )) || builtin source $ZINIT[BIN_DIR]/zinit-side.zsh
+    (( $+functions[.zinit-two-paths] )) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
 
-    reply=( ${(f)"$($Zinit_Annex_Unscope[repo-dir]/ghquery "$name")"} )
+    reply=( ${(f)"$($zi_annex_unscope[repo-dir]/ghquery "$name")"} )
     if [[ -n $reply && ${#reply} -gt 0 ]] {
 	if [[ $reply[1] == (#b)([0-9]##):\ (*) ]] {
-	    forks=$match[1] id=$match[2]
-	    .zinit-any-colorify-as-uspl2 "$id"
-	    (( ${#quiet} )) || +zinit-message "{pre}unscope annex: {term}GitHub-API{msg} found" \
-		    "plugin ({var}forks{msg}>={data}$forks{msg},"\
+		forks=$match[1] id=$match[2]
+		.zinit-any-colorify-as-uspl2 "$id"
+		(( ${#quiet} )) || +zinit-message "{pre}unscope annex: {term}GitHub-API{msg} found" \
+			"plugin ({var}forks{msg}>={data}$forks{msg},"\
 "max.stars){ehi}:{rst} $REPLY{msg}.{rst}"
-	    REPLY=$id
-	    return 0
+		REPLY=$id
+		return 0
 	}
-    } 
+    }
     REPLY=
     return 1
 }

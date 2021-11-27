@@ -1,8 +1,9 @@
 #!/usr/bin/env zsh
-# -*- mode: sh; sh-indentation: 4; sh-basic-offset: 4; indent-tabs-mode: nil;  -*-
-
-# Copyright (c) 2020 Sebastian Gniazdowski
-# License: MIT
+# shellcheck shell=sh
+# shellcheck disable=3043,2034,3003,2296,2298,1037,3006,2154,3024,1009
+#
+# Copyright (c) 2019 Sebastian Gniazdowski
+# Copyright (c) 2021 Z-Shell ZI Contributors
 
 ∧za-unscope-scope-cmd() {
     # Set the base and typically useful options.
@@ -61,7 +62,7 @@
     local -a reply
     if .zinit-get-object-path AUTO $id; then
         ibexisted=1
-        { new_teleid_data="$(<$REPLY/._zinit/dynamic-unscope)" } 2>/dev/null
+        { new_teleid_data="$(<$REPLY/._zi/dynamic-unscope)" } 2>/dev/null
     fi
 
     # No scoped ID found on disk, because there isn't such plugin downloaded?
@@ -70,14 +71,14 @@
         # Enable all messages like if the debug ice was given
         # for a new plugin installation — with the small exception
         # on the additional GH-API messages — they'll be shown
-        # only when not called as `zinit scope …' unless the
+        # only when not called as `zi scope …' unless the
         # -m `scope'-option will be given — see the invocation of
         # .za-scope-dynamic invocation below.
         #
         # Note: The messages are success-only, i.e.: no failure messages.
         integer ibshow_messages=1
 
-        new_teleid_data=${(v)Zinit_Annex_Unscope_Mappings[(i)<->. ##$id]}
+        new_teleid_data=${(v)zi_annex_unscope_mappings[(i)<->. ##$id]}
         if [[ -n $new_teleid_data ]] {
             integer from_static=1
         } elif (( !${#no_api} )) {
@@ -94,7 +95,7 @@
 
     if (( !${#reply_only} )) {
         if [[ -n $new_teleid_data ]] {
-            (($+functions[.zinit-two-paths])) || builtin source $ZINIT[BIN_DIR]/zinit-side.zsh
+            (($+functions[.zinit-two-paths])) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
 
             local -a object_data
             object_data=( "${(@Q)${(@z)new_teleid_data}}" )
@@ -116,11 +117,11 @@
     # caller (i.e.: the before-load hook).
     if (( ibexisted == 0 )) {
         # Set the flag for the possible outer function
-        Zinit_Annex_Unscope[enable-output]=1
+        zi_annex_unscope[enable-output]=1
     } else {
         # Clear the flag for the possible outer function
         # (to not have it propagated after a direct call).
-        Zinit_Annex_Unscope[enable-output]=0
+        zi_annex_unscope[enable-output]=0
     }
 
     REPLY=${${type:+$new_teleid_data}:-${new_teleid_data%%\ ##<->}}

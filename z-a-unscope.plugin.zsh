@@ -1,7 +1,8 @@
-# -*- mode: sh; sh-indentation: 4; sh-basic-offset: 4; -*-
-
-# Copyright (c) 2020 Sebastian Gniazdowski
-# License MIT
+# shellcheck shell=sh
+# shellcheck disable=3043,2034,3003,2296,2298,1037,3006,2154,3024,1009
+#
+# Copyright (c) 2019 Sebastian Gniazdowski
+# Copyright (c) 2021 Z-Shell ZI Contributors
 
 # Get $0 according to the Zsh Plugin Standard:
 # http://z-shell.org/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html#zero-handling
@@ -9,8 +10,8 @@
 0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
 0="${${(M)0:#/*}:-$PWD/$0}"
 
-typeset -gA Zinit_Annex_Unscope
-Zinit_Annex_Unscope[0]="$0" Zinit_Annex_Unscope[repo-dir]="${0:h}"
+typeset -gA zi_annex_unscope
+zi_annex_unscope[0]="$0" zi_annex_unscope[repo-dir]="${0:h}"
 
 # According to the Zsh Plugin Standard:
 # http://z-shell.org/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html#std-hash
@@ -44,9 +45,9 @@ autoload -Uz ∧za-unscope-before-load-handler \
 # are different in that they're not just stripped GitHub user name
 # (i.e.: unscoped), but free in general names.
 
-typeset -gA Zinit_Annex_Unscope_Mappings
+typeset -gA zi_annex_unscope_mappings
 
-Zinit_Annex_Unscope_Mappings=(
+zi_annex_unscope_mappings=(
     # z-shell/null
     "1.   null"				"z-shell/null 0"
 
@@ -54,29 +55,29 @@ Zinit_Annex_Unscope_Mappings=(
     "2.   z-a-as-monitor"		"z-shell/z-a-as-monitor 0"
     "3.   as-monitor"			"z-shell/z-a-as-monitor 0"
     "4.   monitor"			"z-shell/z-a-as-monitor 0"
-                                         
-    # z-a-patch-dl                     
+
+    # z-a-patch-dl
     "5.   z-a-patch-dl"			"z-shell/z-a-patch-dl 0"
     "6.   patch-dl"			"z-shell/z-a-patch-dl 0"
-                                         
-    # z-a-submods                     
+
+    # z-a-submods
     "7.   z-a-submods"			"z-shell/z-a-submods 0"
     "8.   submods"			"z-shell/z-a-submods 0"
 
-    # z-a-rust                         
+    # z-a-rust
     "9.   z-a-rust"			"z-shell/z-a-rust 0"
     "10.  rust"				"z-shell/z-a-rust 0"
-                                         
-    # z-a-bin-gem-node                 
+
+    # z-a-bin-gem-node
     "11.   z-a-bin-gem-node"		"z-shell/z-a-bin-gem-node 0"
     "12.   bin-gem-node"		"z-shell/z-a-bin-gem-node 0"
     "13.   bgn"				"z-shell/z-a-bin-gem-node 0"
 
-    # zinit-console                 
-    "14.   zinit-console"		"z-shell/zinit-console 0"
-    "15.   console"			"z-shell/zinit-console 0"
-    "16.   consolette"			"z-shell/zinit-console 0"
-                                
+    # zi-console
+    "14.   zi-console"		"z-shell/zi-console 0"
+    "15.   console"			"z-shell/zi-console 0"
+    "16.   consolette"			"z-shell/zi-console 0"
+
     # Prezto archive
     "17.  archive"			"PZTM::archive 1"
     "18.  arch"				"PZTM::archive 1"
@@ -93,7 +94,7 @@ Zinit_Annex_Unscope_Mappings=(
     "23.  utility"			"PZTM::utility 1"
     "24.  util"				"PZTM::utility 1"
 
-    # fast-syntax-highlighting  
+    # fast-syntax-highlighting
     "25.  fast-syntax-highlighting"	"z-shell/fast-syntax-highlighting 0"
     "26.  f-sy-h"		        "z-shell/fast-syntax-highlighting 0"
     "27.  fsh"				"z-shell/fast-syntax-highlighting 0"
@@ -125,7 +126,7 @@ Zinit_Annex_Unscope_Mappings=(
     "41.  asug"				"zsh-users/zsh-autosuggestions 0"
     "42.  z-asug"			"zsh-users/zsh-autosuggestions 0"
 
-    # zsh-syntax-highlighting  
+    # zsh-syntax-highlighting
     "43.  zsh-syntax-highlighting"      "zsh-users/zsh-syntax-highlighting 0"
     "44.  z-sy-h"		        "zsh-users/zsh-syntax-highlighting 0"
 
@@ -156,7 +157,7 @@ Zinit_Annex_Unscope_Mappings=(
     "62.  evil-mot"			"zsh-vi-more/vi-motions 0"
     "63.  vi-mot"			"zsh-vi-more/vi-motions 0"
     "64.  vimot"			"zsh-vi-more/vi-motions 0"
- 
+
     # vi-increment
     "65.  vi-increment"			"zsh-vi-more/vi-increment 0"
     "66.  evil-inc"			"zsh-vi-more/vi-increment 0"

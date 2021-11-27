@@ -1,7 +1,9 @@
 #!/usr/bin/env zsh
-# -*- mode: sh; sh-indentation: 4; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
-
-# Copyright (c) 2020 Sebastian Gniazdowski
+# shellcheck shell=sh
+# shellcheck disable=3043,2034,3003,2296,2298,1037,3006,2154,3024,1009,1036,1088
+#
+# Copyright (c) 2019 Sebastian Gniazdowski
+# Copyright (c) 2021 Z-Shell ZI Contributors
 
 ∧za-unscope-before-load-handler() {
 
@@ -15,7 +17,7 @@
     integer ibshow_messages=$+ICE[debug]
 
     # Exclude IDs with slashes and also packages
-    [[ $id == */* ]] && local bad_id=1 
+    [[ $id == */* ]] && local bad_id=1
     [[ $id == *:* ]] && local bad_id2=1
     [[ $ICE[teleid] == */* ]] && local bad_tele=1
     (( $+ICE[pack] )) && local is_pack=1
@@ -45,13 +47,13 @@
     # So the completion-method switching doesn't seem to work.
     if { ∧za-unscope-scope-cmd -rt "$___id" ${${(M)ibghapi:#0}:+-n} } {
 
-        if (( Zinit_Annex_Unscope[enable-output] )) {
+        if (( zi_annex_unscope[enable-output] )) {
             # Clear the messages-flag, for cleanness
-            Zinit_Annex_Unscope[enable-output]=0
-            
+            zi_annex_unscope[enable-output]=0
+
             # Enable the output from this annex
             # [Updated to disable via configuration]
-            if (( $+ZINIT_ANNNEX_UNSCOPE_HUMBLE ))
+            if (( $+ZI_ANNNEX_UNSCOPE_HUMBLE ))
             then
                 integer ibshow_messages=0
             else
@@ -78,7 +80,7 @@
 
         # Debug message.
         if (( ibshow_messages )) {
-            (($+functions[.zinit-two-paths])) || builtin source $ZINIT[BIN_DIR]/zinit-side.zsh
+            (($+functions[.zinit-two-paths])) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
             .zinit-any-colorify-as-uspl2 $ICE[teleid]
             +zinit-message "{pre}unscope annex: {msg}Matched the key:" \
                 "{meta}$id {ehi}→{rst} $REPLY" \

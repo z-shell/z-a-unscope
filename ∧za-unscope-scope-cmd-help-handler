@@ -1,5 +1,7 @@
-# -*- mode: sh; sh-indentation: 4; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
-# Copyright (c) 2020 Sebastian Gniazdowski
+# shellcheck shell=sh
+#
+# Copyright (c) 2019 Sebastian Gniazdowski
+# Copyright (c) 2021 Z-Shell ZI Contributors
 
 ∧za-unscope-scope-cmd-help-handler() {
     +zinit-message "—— {pre}scope {meta}--help{data}/{meta}-h" \
