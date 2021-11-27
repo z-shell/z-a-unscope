@@ -27,7 +27,7 @@
             msgs=( ${bad_id:+the ID contains a slash} ${bad_id2:+the ID looks like a snippet ID}
                    ${bad_tele:+"the {ice}teleid{meta}''{msg} ice contains a slash"}
                    ${is_pack:+"the ID is a package / {ice}pack{meta}''{msg} ice given"} )
-            +zinit-message "{pre}unscope annex: {msg}Skipping the ID: {meta2}$id{msg}" \
+            +zi-message "{pre}unscope annex: {msg}Skipping the ID: {meta2}$id{msg}" \
                 "(reason(s): ${(j:, :)msgs}).{rst}"
         }
         return 0
@@ -80,9 +80,9 @@
 
         # Debug message.
         if (( ibshow_messages )) {
-            (($+functions[.zinit-two-paths])) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
-            .zinit-any-colorify-as-uspl2 $ICE[teleid]
-            +zinit-message "{pre}unscope annex: {msg}Matched the key:" \
+            (($+functions[.zi-two-paths])) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
+            .zi-any-colorify-as-uspl2 $ICE[teleid]
+            +zi-message "{pre}unscope annex: {msg}Matched the key:" \
                 "{meta}$id {ehi}→{rst} $REPLY" \
                 "{msg}({meta2}$tpe_map[$object_data[2]]{msg}).{rst}"
         }

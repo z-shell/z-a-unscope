@@ -32,7 +32,7 @@
         -reply-ony=reply_only r=reply_only -msg=msg m=msg \
         -type=type t=type h=help -help=help -list=list l=list || retval=1
         if [[ $retval -gt 0 || $1 = -* ]] {
-            +zinit-message "{nl}{error}unscope annex: {msg}Incorrect options" \
+            +zi-message "{nl}{error}unscope annex: {msg}Incorrect options" \
                 "given${${(M)1:#-*}:+ "(bad option: {ehi}$1{rst}{msg})"}." \
                 "Usage:{rst}{nl}"
             help=( -h ) retval=1
@@ -40,7 +40,7 @@
 
     local id=${${1#@}%%(///|//|/)}
     if [[ -z $id && ${#help} -eq 0 && ${#list} -eq 0 ]] {
-        +zinit-message "{ehi}unscope annex:{rst}{msg} Missing the ID to" \
+        +zi-message "{ehi}unscope annex:{rst}{msg} Missing the ID to" \
             "(un)scope. Usage:{rst}{nl}"
         help=( -h ) retval=1
     }
@@ -60,7 +60,7 @@
     integer ibexisted
     local new_teleid_data
     local -a reply
-    if .zinit-get-object-path AUTO $id; then
+    if .zi-get-object-path AUTO $id; then
         ibexisted=1
         { new_teleid_data="$(<$REPLY/._zi/dynamic-unscope)" } 2>/dev/null
     fi
@@ -95,20 +95,20 @@
 
     if (( !${#reply_only} )) {
         if [[ -n $new_teleid_data ]] {
-            (($+functions[.zinit-two-paths])) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
+            (($+functions[.zi-two-paths])) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
 
             local -a object_data
             object_data=( "${(@Q)${(@z)new_teleid_data}}" )
-            .zinit-any-colorify-as-uspl2 "$object_data[1]"
+            .zi-any-colorify-as-uspl2 "$object_data[1]"
             (( from_dynamic )) && local msg_bit=" ({term}GH-API{msg})"
             (( from_disk )) && local msg_bit=" (stored {term}GH-API{msg})"
             (( from_static )) && local msg_bit=" ({term}static map{msg})"
 
-            +zinit-message "{pre}unscope annex: {msg}The key{ehi}:{rst}" \
+            +zi-message "{pre}unscope annex: {msg}The key{ehi}:{rst}" \
                 "{data}$id{msg} matched$msg_bit to{ehi}:{rst}" \
                 "$REPLY{msg}.{rst}"
         } else {
-            +zinit-message "{pre}unscope annex: {msg}Didn't find any match" \
+            +zi-message "{pre}unscope annex: {msg}Didn't find any match" \
                     "for the given key{ehi}:{rst} {data}$id{msg}.{rst}"
         }
     }

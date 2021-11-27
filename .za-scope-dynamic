@@ -23,14 +23,14 @@
     local name=$1 forks id
     local -a match mbegin mend
 
-    (( $+functions[.zinit-two-paths] )) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
+    (( $+functions[.zi-two-paths] )) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
 
     reply=( ${(f)"$($zi_annex_unscope[repo-dir]/ghquery "$name")"} )
     if [[ -n $reply && ${#reply} -gt 0 ]] {
 	if [[ $reply[1] == (#b)([0-9]##):\ (*) ]] {
 		forks=$match[1] id=$match[2]
-		.zinit-any-colorify-as-uspl2 "$id"
-		(( ${#quiet} )) || +zinit-message "{pre}unscope annex: {term}GitHub-API{msg} found" \
+		.zi-any-colorify-as-uspl2 "$id"
+		(( ${#quiet} )) || +zi-message "{pre}unscope annex: {term}GitHub-API{msg} found" \
 			"plugin ({var}forks{msg}>={data}$forks{msg},"\
 "max.stars){ehi}:{rst} $REPLY{msg}.{rst}"
 		REPLY=$id

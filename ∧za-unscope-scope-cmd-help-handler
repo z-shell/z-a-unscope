@@ -4,7 +4,7 @@
 # Copyright (c) 2021 Z-Shell ZI Contributors
 
 ∧za-unscope-scope-cmd-help-handler() {
-    +zinit-message "—— {pre}scope {meta}--help{data}/{meta}-h" \
+    +zi-message "—— {pre}scope {meta}--help{data}/{meta}-h" \
             "--list{data}/{meta}-l" \
             "--no-api{data}/{meta}-n --reply-only{data}/{meta}-r" \
             "--msg{data}/{meta}-m {meta}--type{data}/{meta}-t" \
