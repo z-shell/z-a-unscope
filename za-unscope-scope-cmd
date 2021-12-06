@@ -1,11 +1,8 @@
 #!/usr/bin/env zsh
-# shellcheck shell=sh
-# shellcheck disable=3043,2034,3003,2296,2298,1037,3006,2154,3024,1009
-#
 # Copyright (c) 2019 Sebastian Gniazdowski
 # Copyright (c) 2021 Z-Shell ZI Contributors
 
-∧za-unscope-scope-cmd() {
+za-unscope-scope-cmd() {
     # Set the base and typically useful options.
     builtin emulate -LR zsh
     builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
@@ -47,7 +44,7 @@
 
     # --help/-h
     if (( ${#help} )) {
-        ∧za-unscope-scope-cmd-help-handler
+        za-unscope-scope-cmd-help-handler
         return retval
     }
 

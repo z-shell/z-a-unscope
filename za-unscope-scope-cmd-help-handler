@@ -1,0 +1,22 @@
+# Copyright (c) 2019 Sebastian Gniazdowski
+# Copyright (c) 2021 Z-Shell ZI Contributors
+
+za-unscope-scope-cmd-help-handler() {
+  +zi-message "—— {pre}scope {meta}--help{data}/{meta}-h" "--list{data}/{meta}-l" "--no-api{data}/{meta}-n --reply-only{data}/{meta}-r" \
+  "--msg{data}/{meta}-m {meta}--type{data}/{meta}-t" "{info3}ID" "{rst}{nl}{nl}" \
+    \
+    "{msg2}Description:{rst}{nl}" "{info3}ID{ehi}:{rst}{msg}              the short-plugin ID{rst}{nl}" \
+    "{meta}--help{data}/{meta}-h{ehi}:{rst}{msg}       this message{rst}{nl}" \
+    "{meta}--list{data}/{meta}-l{ehi}:{rst}{msg}       list the static-mappings" \
+    "database{rst}{nl}" \
+    "{meta}--no-api{data}/{meta}-n{ehi}:{rst}{msg}     no internet (no GitHub" \
+    "API query, only the static mapping will be searched){rst}{nl}" \
+    "{meta}--reply-only{data}/{meta}-r{ehi}:{rst}{msg} no stdout, only set" \
+    "{var}\$REPLY{rst}{nl}" \
+    "{meta}--msg{data}/{meta}-m{ehi}:{rst}{msg}        extended messages on" \
+    "{meta2}GitHub API{msg} queries{rst}{nl}" \
+    "{meta}--type{data}/{meta}-t{ehi}:{rst}{msg}       append the object-type" \
+    "({data2}0{ehi}→{rst}{msg}plugin or {data2}1{ehi}→{rst}{msg}snippet)" \
+    "to the {var}\$REPLY{rst}"
+  return 0
+}

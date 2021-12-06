@@ -1,21 +1,16 @@
 #!/usr/bin/env zsh
-# shellcheck shell=sh
-# shellcheck disable=3043,2034,3003,2296,2298,1037,3006,2154,3024,1009,1036,1088
-#
 # Copyright (c) 2019 Sebastian Gniazdowski
 # Copyright (c) 2021 Z-Shell ZI Contributors
 
-∧za-unscope-before-load-handler() {
+za-unscope-before-load-handler() {
 
     # Set the base and typically useful options.
     builtin emulate -LR zsh
     builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
 
     local type=$1 id=$2 id_as=$3 args=$4 ices=$5 hook=$6 subtype=$7
-
     # Conditionally enable the output from this annex
     integer ibshow_messages=$+ICE[debug]
-
     # Exclude IDs with slashes and also packages
     [[ $id == */* ]] && local bad_id=1
     [[ $id == *:* ]] && local bad_id2=1
@@ -45,7 +40,7 @@
 
     # I've pressed C-J. Will now press C-J and C-H a few times
     # So the completion-method switching doesn't seem to work.
-    if { ∧za-unscope-scope-cmd -rt "$___id" ${${(M)ibghapi:#0}:+-n} } {
+    if { za-unscope-scope-cmd -rt "$___id" ${${(M)ibghapi:#0}:+-n} } {
 
         if (( zi_annex_unscope[enable-output] )) {
             # Clear the messages-flag, for cleanness
