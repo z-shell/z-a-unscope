@@ -1,30 +1,27 @@
-# shellcheck shell=sh
-#
 # Copyright (c) 2019 Sebastian Gniazdowski
 # Copyright (c) 2021 Z-Shell ZI Contributors
 
 .za-unscope-list-mappings() {
-    builtin emulate -LR zsh
-    builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
+  builtin emulate -LR zsh
+  builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
 
-    local -a keys
-    keys=( ${(kon)zi_annex_unscope_mappings[@]} )
+  local -a keys
+  keys=( ${(kon)zi_annex_unscope_mappings[@]} )
 
-    if (( !${#keys} )) {
-        +zi-message "{ehi}unscope annex:{rst}{msg} No mappings found." \
-                "Is the plugin correctly loaded? (Missing hash variable{ehi}:" \
-                "{rst}{var}\$zi_annex_unscope_mappings{msg}).{rst}"
-        return 1
-    }
+  if (( !${#keys} )) {
+    +zi-message "{ehi}unscope annex:{rst}{msg} No mappings found." \
+    "Is the plugin correctly loaded? (Missing hash variable{ehi}:" \
+    "{rst}{var}\$zi_annex_unscope_mappings{msg}).{rst}"
+    return 1
+  }
 
-    +zi-message "{p}#{rst}     {obj2}${(r:21:: :):-Short Name}{rst}" \
-        "{txt}Full (Scoped) Plugin ID{rst}"
-    local key
-    for key ( $keys ) {
-        +zi-message "{meta}${(M)key##<->.[[:space:]]##}" \
-                "{data}${(r:17:: :)${key##<->.[[:space:]]##}}" \
-                "{ehi}→{rst}  " \
-                "{msg}${zi_annex_unscope_mappings[$key]% <->}{rst}"
+  +zi-message "{p}#{rst}     {obj2}${(r:21:: :):-Short Name}{rst}" \
+    "{txt}Full (Scoped) Plugin ID{rst}"
+  local key
+  for key ( $keys ) {
+    +zi-message "{meta}${(M)key##<->.[[:space:]]##}" \
+    "{data}${(r:17:: :)${key##<->.[[:space:]]##}}" \
+    "{ehi}→{rst}  " "{msg}${zi_annex_unscope_mappings[$key]% <->}{rst}"
 
-    }
+  }
 }

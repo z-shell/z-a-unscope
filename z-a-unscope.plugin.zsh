@@ -22,17 +22,13 @@ za-unscope-scope-cmd .za-scope-dynamic .za-unscope-list-mappings
 za-unscope-help-null-handler() { :; }
 
 # The unscoping-support hook.
-@zi-register-annex "z-a-unscope" \
-    hook:before-load-5 \
-    za-unscope-before-load-handler \
-    za-unscope-help-null-handler \
-    "dynamic-unscope''|ghapi" # New ices
+@zi-register-annex "z-a-unscope" hook:before-load-5 \
+za-unscope-before-load-handler za-unscope-help-null-handler \
+"dynamic-unscope''|ghapi" # New ices
 
 # The subcommand `scope'.
-@zi-register-annex "z-a-unscope" \
-    subcommand:scope \
-    za-unscope-scope-cmd \
-    za-unscope-scope-cmd-help-handler
+@zi-register-annex "z-a-unscope" subcommand:scope \
+za-unscope-scope-cmd za-unscope-scope-cmd-help-handler
 
 # The hash that holds mappings of the unscoped plugin names to the
 # scoped ones, and also the nick-names that map to the same, however
@@ -44,10 +40,10 @@ typeset -gA zi_annex_unscope_mappings
 zi_annex_unscope_mappings=(
   # z-shell/null
   "1.   null"				"z-shell/null 0"
-  # z-a-as-monitor
-  "2.   z-a-as-monitor"		"z-shell/z-a-as-monitor 0"
-  "3.   as-monitor"			"z-shell/z-a-as-monitor 0"
-  "4.   monitor"			"z-shell/z-a-as-monitor 0"
+  # z-a-readurl
+  "2.   z-a-readurl"		"z-shell/z-a-readurl 0"
+  "3.   read-url"			"z-shell/z-a-readurl 0"
+  "4.   rdurl"			"z-shell/z-a-readurl 0"
   # z-a-patch-dl
   "5.   z-a-patch-dl"			"z-shell/z-a-patch-dl 0"
   "6.   patch-dl"			"z-shell/z-a-patch-dl 0"
@@ -77,13 +73,13 @@ zi_annex_unscope_mappings=(
   # Prezto utility
   "23.  utility"			"PZTM::utility 1"
   "24.  util"				"PZTM::utility 1"
-  # fast-syntax-highlighting
-  "25.  fast-syntax-highlighting"	"z-shell/fast-syntax-highlighting 0"
-  "26.  f-sy-h"		        "z-shell/fast-syntax-highlighting 0"
-  "27.  fsh"				"z-shell/fast-syntax-highlighting 0"
-  # history-search-multi-word
-  "28.  history-search-multi-word"	"z-shell/history-search-multi-word 0"
-  "29.  hsmw"				"z-shell/history-search-multi-word 0"
+  # F-Sy-H
+  "25.  F-Sy-H"	  "z-shell/F-Sy-H 0"
+  "26.  f-sy-h"   "z-shell/F-Sy-H 0"
+  "27.  fsh"    "z-shell/F-Sy-H 0"
+  # H-S-MW
+  "28.  H-S-MW"   "z-shell/H-S-MW 0"
+  "29.  hsmw"   "z-shell/H-S-MW 0"
   # ZUI
   "30.  zui"				"z-shell/zui 0"
   "31.  ZUI"				"z-shell/zui 0"
@@ -97,9 +93,9 @@ zi_annex_unscope_mappings=(
   "36.  zzcomp"			"z-shell/zzcomplete 0"
   "37.  zzcom"			"z-shell/zzcomplete 0"
   # zsh-autosuggestions
-  "38.  zsh-autosuggestions"		"zsh-users/zsh-autosuggestions 0"
-  "39.  autosuggestions"		"zsh-users/zsh-autosuggestions 0"
-  "40.  autosug"			"zsh-users/zsh-autosuggestions 0"
+  "38.  zsh-autosuggestions"    "zsh-users/zsh-autosuggestions 0"
+  "39.  autosuggestions"    "zsh-users/zsh-autosuggestions 0"
+  "40.  autosug"    "zsh-users/zsh-autosuggestions 0"
   "41.  asug"				"zsh-users/zsh-autosuggestions 0"
   "42.  z-asug"			"zsh-users/zsh-autosuggestions 0"
   # zsh-syntax-highlighting

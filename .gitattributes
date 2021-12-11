@@ -1,4 +1,5 @@
-*.md    diff=markdown
-*.zsh   diff=zsh
-∧*      diff=zsh
-\.za-*  diff=zsh
+*.md diff=markdown
+*.zsh diff=zsh
+z-a diff=zsh
+za-* diff=zsh
+.za-* diff=zsh

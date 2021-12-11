@@ -38,13 +38,13 @@ user name. It works as follows:
    unscoped (i.e.: not using any GitHub username) ID that's being dynamically
    resolved by a request to **GitHub API**:
 
-![zi-for-command](https://raw.githubusercontent.com/z-shell/z-a-unscope/main/images/unscope-zinit-for.png)
+![zi-for-command](images/unscope-zinit-for.png)
 
 2. An example call to the **zi scope …** subcommand that is added by this
    annex. It allows to translate the unscoped IDs and the short-static
    nicknames into the full **username/repository** plugin ID.
 
-![scope-subcommand](https://raw.githubusercontent.com/z-shell/z-a-unscope/main/images/unscope-scope-cmd.png)
+![scope-subcommand](images/unscope-scope-cmd.png)
 
 # Static Mappings
 
@@ -54,9 +54,9 @@ of short names to the full GitHub IDs. The list currently consists of:
 |    Short (Nick-) Name     | GitHub ID / scoped ID             |
 | :-----------------------: | --------------------------------- |
 |           null            | z-shell/null                      |
-|      z-a-as-monitor       | z-shell/z-a-as-monitor            |
-|        as-monitor         | z-shell/z-a-as-monitor            |
-|          monitor          | z-shell/z-a-as-monitor            |
+|        z-a-readurl        | z-shell/z-a-readurl               |
+|          readurl          | z-shell/z-a-readurl               |
+|           rdurl           | z-shell/z-a-readurl               |
 |       z-a-patch-dl        | z-shell/z-a-patch-dl              |
 |         patch-dl          | z-shell/z-a-patch-dl              |
 |        z-a-submods        | z-shell/z-a-submods               |
