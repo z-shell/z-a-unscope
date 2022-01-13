@@ -1,3 +1,10 @@
+<h2 align="center">
+  <a href="https://github.com/z-shell/zi">
+    <img src="https://github.com/z-shell/zi/raw/main/docs/images/logo.svg" alt="Logo" width="80" height="80" />
+  </a>
+❮ ZI ❯ Annex - Unscope
+</h2>
+
 - [Introduction](#introduction)
 - [Usage Examples](#usage-examples)
 - [Static Mappings](#static-mappings)
@@ -5,10 +12,7 @@
 
 # Introduction
 
-> **[?]**
-> This repository not compatible with previous versions (zplugin, zinit).
->
-> Please upgrade to [ZI](https://github.com/z-shell-zi)
+**[?]** This repository is compatible with - [ZI](https://github.com/z-shell-zi)
 
 A Z-Shell [ZI](https://github.com/z-shell/zi) Annex (i.e. an extension) that allows to install plugins without specifying the GitHub
 user name. It works as follows:
