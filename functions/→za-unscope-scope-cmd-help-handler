@@ -14,7 +14,7 @@
     "{opt}--reply-only{data}/{opt}-r{ehi}:{rst}{msg} no stdout, only set" \
     "{opt}\$REPLY{rst}{nl}" \
     "{opt}--msg{data}/{opt}-m{ehi}:{rst}{msg} extended messages on" \
-    "{opt2}GitHub API{msg} queries{rst}{nl}" \
+    "{opt}GitHub API{msg} queries{rst}{nl}" \
     "{opt}--type{data}/{opt}-t{ehi}:{rst}{msg} append the object-type" \
     "({data2}0{ehi}→{rst}{msg}plugin or {data2}1{ehi}→{rst}{msg}snippet)" \
     "to the {opt}\$REPLY{rst}{nl}"
