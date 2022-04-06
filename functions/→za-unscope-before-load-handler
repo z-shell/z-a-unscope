@@ -2,7 +2,7 @@
 # Copyright (c) 2019 Sebastian Gniazdowski
 # Copyright (c) 2021 Z-Shell ZI Contributors
 
-za-unscope-before-load-handler() {
+→za-unscope-before-load-handler() {
 
     # Set the base and typically useful options.
     builtin emulate -LR zsh
@@ -40,7 +40,7 @@ za-unscope-before-load-handler() {
 
     # I've pressed C-J. Will now press C-J and C-H a few times
     # So the completion-method switching doesn't seem to work.
-    if { za-unscope-scope-cmd -rt "$___id" ${${(M)ibghapi:#0}:+-n} } {
+    if { →za-unscope-scope-cmd -rt "$___id" ${${(M)ibghapi:#0}:+-n} } {
 
         if (( zi_annex_unscope[enable-output] )) {
             # Clear the messages-flag, for cleanness
@@ -85,3 +85,5 @@ za-unscope-before-load-handler() {
 
     return 0
 }
+
+# vim: ft=zsh sw=2 ts=2 et

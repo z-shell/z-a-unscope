@@ -1,0 +1,24 @@
+# Copyright (c) 2021 Z-Shell ZI Contributors
+
+→za-unscope-scope-cmd-help-handler() {
+  +zi-message "{nl}—— {pre}scope {opt}--help{data}/{opt}-h" "--list{data}/{opt}-l" "--no-api{data}/{opt}-n --reply-only{data}/{opt}-r" \
+    "--msg{data}/{opt}-m {opt}--type{data}/{opt}-t" "{info3}ID" "{rst}{nl}{nl}" \
+    \
+    "{msg2}{u}Description{nu}{ehi}:{rst}{nl}" \
+    "{info3}ID{ehi}:{rst}{msg} the short-plugin ID{rst}{nl}" \
+    "{opt}--help{data}/{opt}-h{ehi}:{rst}{msg} this message{rst}{nl}" \
+    "{opt}--list{data}/{opt}-l{ehi}:{rst}{msg} list the static-mappings" \
+    "database{rst}{nl}" \
+    "{opt}--no-api{data}/{opt}-n{ehi}:{rst}{msg} no internet (no GitHub" \
+    "API query, only the static mapping will be searched){rst}{nl}" \
+    "{opt}--reply-only{data}/{opt}-r{ehi}:{rst}{msg} no stdout, only set" \
+    "{opt}\$REPLY{rst}{nl}" \
+    "{opt}--msg{data}/{opt}-m{ehi}:{rst}{msg} extended messages on" \
+    "{opt2}GitHub API{msg} queries{rst}{nl}" \
+    "{opt}--type{data}/{opt}-t{ehi}:{rst}{msg} append the object-type" \
+    "({data2}0{ehi}→{rst}{msg}plugin or {data2}1{ehi}→{rst}{msg}snippet)" \
+    "to the {opt}\$REPLY{rst}{nl}"
+  return 0
+}
+
+# vim: ft=zsh sw=2 ts=2 et

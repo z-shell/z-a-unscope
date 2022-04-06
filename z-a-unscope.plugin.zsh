@@ -2,33 +2,35 @@
 # Copyright (c) 2021 Z-Shell ZI Contributors
 
 # Get $0 according to the Zsh Plugin Standard:
-# https://github.com/z-shell/zi/wiki/Zsh-Plugin-Standard
-
-0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
+# https://z.digitalclouds.dev/community/zsh_plugin_standard#zero-handling
+0="${ZERO:-${${0:#$ZSH_ARGZERO}:-${(%):-%N}}}"
 0="${${(M)0:#/*}:-$PWD/$0}"
 
 typeset -gA zi_annex_unscope
 zi_annex_unscope[0]="$0" zi_annex_unscope[repo-dir]="${0:h}"
 
-# According to the Zsh Plugin Standard:
-# https://github.com/z-shell/zi/wiki/Zsh-Plugin-Standard
+# Standard Plugins Hash
+# https://z.digitalclouds.dev/community/zsh_plugin_standard#standard-plugins-hash
 typeset -gA Plugins
 Plugins[UNSCOPE_DIR]=${0:h}
 
-autoload -Uz za-unscope-before-load-handler za-unscope-scope-cmd-help-handler \
-za-unscope-scope-cmd .za-scope-dynamic .za-unscope-list-mappings
+# The Proposed Function-Name Prefixes
+# https://z.digitalclouds.dev/community/zsh_plugin_standard#the-proposed-function-name-prefixes
+autoload -Uz →za-unscope-before-load-handler →za-unscope-scope-cmd-help-handler \
+→za-unscope-scope-cmd .za-scope-dynamic .za-unscope-list-mappings
 
 # An empty stub to fill the help handler fields
-za-unscope-help-null-handler() { :; }
+→za-unscope-help-null-handler() { :; }
 
 # The unscoping-support hook.
 @zi-register-annex "z-a-unscope" hook:before-load-5 \
-za-unscope-before-load-handler za-unscope-help-null-handler \
-"dynamic-unscope''|ghapi" # New ices
+  →za-unscope-before-load-handler \
+  →za-unscope-help-null-handler "dynamic-unscope''|ghapi" # New ices
 
 # The subcommand `scope'.
 @zi-register-annex "z-a-unscope" subcommand:scope \
-za-unscope-scope-cmd za-unscope-scope-cmd-help-handler
+  →za-unscope-scope-cmd \
+  →za-unscope-scope-cmd-help-handler
 
 # The hash that holds mappings of the unscoped plugin names to the
 # scoped ones, and also the nick-names that map to the same, however
@@ -154,3 +156,5 @@ zi_annex_unscope_mappings=(
   "83.  completions"			"zsh-users/zsh-completions 0"
   "84.  comps"			"zsh-users/zsh-completions 0"
 )
+
+# vim: ft=zsh sw=2 ts=2 et

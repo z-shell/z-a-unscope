@@ -1,8 +1,5 @@
 #!/usr/bin/env zsh
-# shellcheck shell=sh
-# shellcheck disable=SC3043,2034,3003,2296,2298,1037,3006,2154,3024,1009,1072,1073,1083,1050,1140
 
-# Copyright (c) 2019 Sebastian Gniazdowski
 # Copyright (c) 2021 Z-Shell ZI Contributors
 
 # An example of type-agnostic script/function, i.e.: the file can be run as a +x
@@ -14,13 +11,13 @@ setopt extendedglob typesetsilent warncreateglobal noshortloops rcquotes
 
 # Run as script? ZSH_SCRIPT is a Zsh 5.3 addition
 if [[ $0 != */ghquery || -n $ZSH_SCRIPT ]] {
-  # Handle $0 according to the Zsh Plugin Standard:
-  # https://github.com/z-shell/zi/wiki/Zsh-Plugin-Standard#1-standardized-0-handling
-  0=${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}
-  0=${${(M)0##/*}:-$PWD/$0}
+# Handle $0 according to the Zsh Plugin Standard
+# https://z.digitalclouds.dev/community/zsh_plugin_standard#zero-handling
+0="${ZERO:-${${0:#$ZSH_ARGZERO}:-${(%):-%N}}}"
+0="${${(M)0:#/*}:-$PWD/$0}"
 
-  # Such global variable is expected to be typeset'd -g in the plugin.zsh
-  # file. Here it's restored in case of the function being run as a script.
+# Such global variable is expected to be typeset'd -g in the plugin.zsh
+# file. Here it's restored in case of the function being run as a script.
   typeset -gA Plugins
   Plugins[UNSCOPE_DIR]=${0:h}
 
@@ -54,3 +51,5 @@ for forks ( 10 2 0 ) {
 }
 
 exit 1
+
+# vim: ft=zsh sw=2 ts=2 et

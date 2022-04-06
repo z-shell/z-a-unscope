@@ -2,7 +2,7 @@
 # Copyright (c) 2019 Sebastian Gniazdowski
 # Copyright (c) 2021 Z-Shell ZI Contributors
 
-za-unscope-scope-cmd() {
+→za-unscope-scope-cmd() {
     # Set the base and typically useful options.
     builtin emulate -LR zsh
     builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
@@ -44,7 +44,7 @@ za-unscope-scope-cmd() {
 
     # --help/-h
     if (( ${#help} )) {
-        za-unscope-scope-cmd-help-handler
+        →za-unscope-scope-cmd-help-handler
         return retval
     }
 
@@ -124,3 +124,5 @@ za-unscope-scope-cmd() {
     REPLY=${${type:+$new_teleid_data}:-${new_teleid_data%%\ ##<->}}
     [[ -n $REPLY ]]
 }
+
+# vim: ft=zsh sw=2 ts=2 et

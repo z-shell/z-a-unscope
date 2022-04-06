@@ -10,11 +10,9 @@
 
 # A popular plugin manager's files
 ._zi
-._zinit
 .zi_lastupd
-.zinit_lastupd
 
-# z-shell/zshelldoc tool's files
+# z-shell/zsdoc tool's files
 docs/zsdoc/data
 
 # ohmyzsh/ohmyzsh/plugins/per-directory-history plugin's files
