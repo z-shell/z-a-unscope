@@ -59,10 +59,10 @@ zi_annex_unscope_mappings=(
   "11.   z-a-bin-gem-node"		"z-shell/z-a-bin-gem-node 0"
   "12.   bin-gem-node"		"z-shell/z-a-bin-gem-node 0"
   "13.   bgn"				"z-shell/z-a-bin-gem-node 0"
-  # zi-console
-  "14.   zi-console"		"z-shell/zi-console 0"
-  "15.   console"			"z-shell/zi-console 0"
-  "16.   consolette"			"z-shell/zi-console 0"
+  # z-a-meta-plugins
+  "14.   meta"		"z-shell/z-a-meta-plugins 0"
+  "15.   metaplg"			"z-shell/z-a-meta-plugins 0"
+  "16.   meta-plugins"			"z-shell/z-a-meta-plugins 0"
   # Prezto archive
   "17.  archive"			"PZTM::archive 1"
   "18.  arch"				"PZTM::archive 1"
@@ -156,5 +156,3 @@ zi_annex_unscope_mappings=(
   "83.  completions"			"zsh-users/zsh-completions 0"
   "84.  comps"			"zsh-users/zsh-completions 0"
 )
-
-# vim: ft=zsh sw=2 ts=2 et
