@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
-# Copyright (c) 2019 Sebastian Gniazdowski
-# Copyright (c) 2021 Z-Shell ZI Contributors
+# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
+# vim: ft=zsh sw=2 ts=2 et
+#
+# Copyright (c) 2021 Z-Shell Community
 
 →za-unscope-scope-cmd() {
     # Set the base and typically useful options.
@@ -29,16 +31,15 @@
         -reply-ony=reply_only r=reply_only -msg=msg m=msg \
         -type=type t=type h=help -help=help -list=list l=list || retval=1
         if [[ $retval -gt 0 || $1 = -* ]] {
-            +zi-message "{nl}{error}unscope annex: {msg}Incorrect options" \
-                "given${${(M)1:#-*}:+ "(bad option: {ehi}$1{rst}{msg})"}." \
+            +zi-message "{annex}unscope-annex{ehi}:{rst} {msg}Incorrect options" \
+                "given${${(M)1:#-*}:+ "(bad option: {ehi}$1{rst}{msg})"}" \
                 "Usage:{rst}{nl}"
             help=( -h ) retval=1
         }
 
     local id=${${1#@}%%(///|//|/)}
     if [[ -z $id && ${#help} -eq 0 && ${#list} -eq 0 ]] {
-        +zi-message "{ehi}unscope annex:{rst}{msg} Missing the ID to" \
-            "(un)scope. Usage:{rst}{nl}"
+        +zi-message "{annex}unscope-annex{ehi}:{rst}{msg} Missing the ID to (un)scope. Usage:{rst}{nl}"
         help=( -h ) retval=1
     }
 
@@ -101,12 +102,11 @@
             (( from_disk )) && local msg_bit=" (stored {term}GH-API{msg})"
             (( from_static )) && local msg_bit=" ({term}static map{msg})"
 
-            +zi-message "{pre}unscope annex: {msg}The key{ehi}:{rst}" \
-                "{data}$id{msg} matched$msg_bit to{ehi}:{rst}" \
-                "$REPLY{msg}.{rst}"
+            +zi-message "{annex}unscope-annex{ehi}:{rst} {msg}The key{ehi}:{rst}" \
+            "{data}$id{msg} matched$msg_bit to{ehi}:{rst} $REPLY{msg}{rst}"
         } else {
-            +zi-message "{pre}unscope annex: {msg}Didn't find any match" \
-                    "for the given key{ehi}:{rst} {data}$id{msg}.{rst}"
+            +zi-message "{annex}unscope-annex{ehi}:{rst} {msg}Didn't find any match" \
+            "for the given key{ehi}:{rst} {data}$id{msg}{rst}"
         }
     }
 
@@ -124,5 +124,3 @@
     REPLY=${${type:+$new_teleid_data}:-${new_teleid_data%%\ ##<->}}
     [[ -n $REPLY ]]
 }
-
-# vim: ft=zsh sw=2 ts=2 et
