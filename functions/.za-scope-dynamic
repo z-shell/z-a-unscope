@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 
-# Copyright (c) 2019 Sebastian Gniazdowski
-# Copyright (c) 2021 Z-Shell ZI Contributors
+# Copyright (c) 2021 Z-Shell Community
 
 .za-scope-dynamic() {
   builtin emulate -LR zsh
@@ -28,7 +27,8 @@
     if [[ $reply[1] == (#b)([0-9]##):\ (*) ]] {
       forks=$match[1] id=$match[2]
       .zi-any-colorify-as-uspl2 "$id"
-      (( ${#quiet} )) || +zi-message "{pre}unscope annex: {term}GitHub-API{msg} found" \
+      
+      (( ${#quiet} )) || +zi-message "{annex}unscope-annex{ehi}:{rst} {term}GitHub-API{msg} found" \
       "plugin ({var}forks{msg}>={data}$forks{msg},""max.stars){ehi}:{rst} $REPLY{msg}.{rst}"
 
       REPLY=$id
