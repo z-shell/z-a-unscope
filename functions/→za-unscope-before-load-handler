@@ -1,34 +1,34 @@
 #!/usr/bin/env zsh
-# Copyright (c) 2019 Sebastian Gniazdowski
-# Copyright (c) 2021 Z-Shell ZI Contributors
+# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
+# vim: ft=zsh sw=2 ts=2 et
+#
+# Copyright (c) 2021 Z-Shell Community
 
 →za-unscope-before-load-handler() {
+  # Set the base and typically useful options.
+  builtin emulate -LR zsh
+  builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
 
-    # Set the base and typically useful options.
-    builtin emulate -LR zsh
-    builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
-
-    local type=$1 id=$2 id_as=$3 args=$4 ices=$5 hook=$6 subtype=$7
-    # Conditionally enable the output from this annex
-    integer ibshow_messages=$+ICE[debug]
-    # Exclude IDs with slashes and also packages
-    [[ $id == */* ]] && local bad_id=1
-    [[ $id == *:* ]] && local bad_id2=1
-    [[ $ICE[teleid] == */* ]] && local bad_tele=1
-    (( $+ICE[pack] )) && local is_pack=1
-    if (( bad_id || bad_id2 || bad_tele || is_pack )) {
-        if (( ibshow_messages )) {
-            local -a msgs
-            msgs=( ${bad_id:+the ID contains a slash} ${bad_id2:+the ID looks like a snippet ID}
-                   ${bad_tele:+"the {ice}teleid{meta}''{msg} ice contains a slash"}
-                   ${is_pack:+"the ID is a package / {ice}pack{meta}''{msg} ice given"} )
-            +zi-message "{pre}unscope annex: {msg}Skipping the ID: {meta2}$id{msg}" \
-                "(reason(s): ${(j:, :)msgs}).{rst}"
-        }
-        return 0
-    }
-
-    local -a match mbegin mend reply
+  local type=$1 id=$2 id_as=$3 args=$4 ices=$5 hook=$6 subtype=$7
+  # Conditionally enable the output from this annex
+  integer ibshow_messages=$+ICE[debug]
+  # Exclude IDs with slashes and also packages
+  [[ $id == */* ]] && local bad_id=1
+  [[ $id == *:* ]] && local bad_id2=1
+  [[ $ICE[teleid] == */* ]] && local bad_tele=1
+  (( $+ICE[pack] )) && local is_pack=1
+  if (( bad_id || bad_id2 || bad_tele || is_pack )) {
+    if (( ibshow_messages )) {
+      local -a msgs
+      msgs=( ${bad_id:+the ID contains a slash} ${bad_id2:+the ID looks like a snippet ID}
+             ${bad_tele:+"the {ice}teleid{meta}''{msg} ice contains a slash"}
+             ${is_pack:+"the ID is a package / {ice}pack{meta}''{msg} ice given"} )
+      +zi-message "{annex}unscope-annex{ehi}:{rst} {msg}Skipping the ID{ehi}: {meta2}$id{msg} (reason(s): ${(j:, :)msgs}){rst}"
+     }
+     return 0
+  }
+  
+   ocal -a match mbegin mend reply
     local MATCH REPLY
     integer MBEGIN MEND ibghapi=${+ICE[ghapi]}
 
@@ -43,17 +43,17 @@
     if { →za-unscope-scope-cmd -rt "$___id" ${${(M)ibghapi:#0}:+-n} } {
 
         if (( zi_annex_unscope[enable-output] )) {
-            # Clear the messages-flag, for cleanness
-            zi_annex_unscope[enable-output]=0
+          # Clear the messages-flag, for cleanness
+          zi_annex_unscope[enable-output]=0
 
-            # Enable the output from this annex
-            # [Updated to disable via configuration]
-            if (( $+ZI_ANNNEX_UNSCOPE_HUMBLE ))
-            then
-                integer ibshow_messages=0
-            else
-                integer ibshow_messages=1
-            fi
+          # Enable the output from this annex
+          # [Updated to disable via configuration]
+          if (( $+ZI_ANNNEX_UNSCOPE_HUMBLE ))
+          then
+            integer ibshow_messages=0
+          else
+            integer ibshow_messages=1
+          fi
         }
 
         local -a object_data
@@ -69,21 +69,18 @@
 
         # Test if we're being called from the object-load context.
         if [[ $subtype == load ]] {
-            # Possibly change the object type.
-            ___is_snippet=$object_data[2]
+          # Possibly change the object type.
+          ___is_snippet=$object_data[2]
         }
 
         # Debug message.
         if (( ibshow_messages )) {
-            (($+functions[.zi-two-paths])) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
-            .zi-any-colorify-as-uspl2 $ICE[teleid]
-            +zi-message "{pre}unscope annex: {msg}Matched the key:" \
-                "{meta}$id {ehi}→{rst} $REPLY" \
-                "{msg}({meta2}$tpe_map[$object_data[2]]{msg}).{rst}"
+          (($+functions[.zi-two-paths])) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
+          .zi-any-colorify-as-uspl2 $ICE[teleid]
+          +zi-message "{annex}unscope-annex{ehi}:{rst} {msg}Matched the key:" \
+          "{meta}$id {ehi}→{rst} $REPLY" \
+          "{msg}({meta2}$tpe_map[$object_data[2]]{msg}).{rst}"
         }
     }
-
     return 0
 }
-
-# vim: ft=zsh sw=2 ts=2 et
