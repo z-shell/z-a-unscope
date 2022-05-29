@@ -5,15 +5,6 @@
 ❮ ZI ❯ Annex - Unscope
 </h1>
 
-- [Introduction](#introduction)
-- [Usage Examples](#usage-examples)
-- [Static Mappings](#static-mappings)
-- [Install with ZI](#install-with-zi)
-
-# Introduction
-
-**[?]** This repository is compatible with - [ZI](https://github.com/z-shell-zi)
-
 A Z-Shell [ZI](https://github.com/z-shell/zi) Annex (i.e. an extension) that allows to install plugins without specifying the GitHub
 user name. It works as follows:
 
@@ -33,8 +24,7 @@ user name. It works as follows:
    the full scoped IDs will be searched. It contains many mappings, like, e.g.:
    **vi-reg** → **zsh-vi-more/evil-registers**, and also the usual basic
    unscopings of some of the popular plugins out there, like, e.g.:
-   **zsh-syntax-highlighting** → **zsh-users/zsh-syntax-highlighting** and
-   more.
+   **zsh-syntax-highlighting** → **zsh-users/zsh-syntax-highlighting** and more.
 
 # Usage Examples
 
@@ -70,9 +60,9 @@ of short names to the full GitHub IDs. The list currently consists of:
 |     z-a-bin-gem-node      | z-shell/z-a-bin-gem-node          |
 |       bin-gem-node        | z-shell/z-a-bin-gem-node          |
 |            bgn            | z-shell/z-a-bin-gem-node          |
-|        zi-console         | z-shell/zi-console                |
-|          console          | z-shell/zi-console                |
-|        consolette         | z-shell/zi-console                |
+|            meta           | z-shell/z-a-meta-plugins          |
+|          metaplg          | z-shell/z-a-meta-plugins          |
+|        meta-plugins       | z-shell/z-a-meta-plugins          |
 |          archive          | PZTM::archive                     |
 |           arch            | PZTM::archive                     |
 |         directory         | PZTM::directory                   |
