@@ -1,5 +1,7 @@
-# Copyright (c) 2019 Sebastian Gniazdowski
-# Copyright (c) 2021 Z-Shell ZI Contributors
+# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
+# vim: ft=zsh sw=2 ts=2 et
+#
+# Copyright (c) 2021 Z-Shell Community
 
 .za-unscope-list-mappings() {
   builtin emulate -LR zsh
@@ -9,9 +11,9 @@
   keys=( ${(kon)zi_annex_unscope_mappings[@]} )
 
   if (( !${#keys} )) {
-    +zi-message "{ehi}unscope annex:{rst}{msg} No mappings found." \
-    "Is the plugin correctly loaded? (Missing hash variable{ehi}:" \
-    "{rst}{var}\$zi_annex_unscope_mappings{msg}).{rst}"
+    +zi-message "{annex}unscope-annex{ehi}:{rst}{msg} No mappings found." \
+    "(Missing hash variable{ehi}:" \
+    "{rst}{var}\$zi_annex_unscope_mappings{msg}){rst}"
     return 1
   }
 
@@ -22,8 +24,5 @@
     +zi-message "{meta}${(M)key##<->.[[:space:]]##}" \
     "{data}${(r:17:: :)${key##<->.[[:space:]]##}}" \
     "{ehi}→{rst}  " "{msg}${zi_annex_unscope_mappings[$key]% <->}{rst}"
-
   }
 }
-
-# vim: ft=zsh sw=2 ts=2 et
