@@ -28,7 +28,7 @@
      return 0
   }
   
-   ocal -a match mbegin mend reply
+    local -a match mbegin mend reply
     local MATCH REPLY
     integer MBEGIN MEND ibghapi=${+ICE[ghapi]}
 
