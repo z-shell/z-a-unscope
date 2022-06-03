@@ -1,9 +1,10 @@
-#!/usr/bin/env zsh
-
+# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
+# vim: ft=zsh sw=2 ts=2 et
+#
 # Copyright (c) 2021 Z-Shell Community
 
 .za-scope-dynamic() {
-  builtin emulate -LR zsh
+  builtin emulate -LR zsh ${=${options[xtrace]:#off}:+-o xtrace}
   builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
 
   (( $+reply && $+REPLY )) || unsetopt warncreateglobal
@@ -27,7 +28,7 @@
     if [[ $reply[1] == (#b)([0-9]##):\ (*) ]] {
       forks=$match[1] id=$match[2]
       .zi-any-colorify-as-uspl2 "$id"
-      
+
       (( ${#quiet} )) || +zi-message "{annex}unscope-annex{ehi}:{rst} {term}GitHub-API{msg} found" \
       "plugin ({var}forks{msg}>={data}$forks{msg},""max.stars){ehi}:{rst} $REPLY{msg}.{rst}"
 
@@ -38,5 +39,3 @@
   REPLY=
   return 1
 }
-
-# vim: ft=zsh sw=2 ts=2 et

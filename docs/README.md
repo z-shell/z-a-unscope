@@ -60,9 +60,9 @@ of short names to the full GitHub IDs. The list currently consists of:
 |     z-a-bin-gem-node      | z-shell/z-a-bin-gem-node          |
 |       bin-gem-node        | z-shell/z-a-bin-gem-node          |
 |            bgn            | z-shell/z-a-bin-gem-node          |
-|            meta           | z-shell/z-a-meta-plugins          |
+|           meta            | z-shell/z-a-meta-plugins          |
 |          metaplg          | z-shell/z-a-meta-plugins          |
-|        meta-plugins       | z-shell/z-a-meta-plugins          |
+|       meta-plugins        | z-shell/z-a-meta-plugins          |
 |          archive          | PZTM::archive                     |
 |           arch            | PZTM::archive                     |
 |         directory         | PZTM::directory                   |

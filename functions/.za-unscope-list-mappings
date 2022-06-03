@@ -4,7 +4,7 @@
 # Copyright (c) 2021 Z-Shell Community
 
 .za-unscope-list-mappings() {
-  builtin emulate -LR zsh
+  builtin emulate -LR zsh ${=${options[xtrace]:#off}:+-o xtrace}
   builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
 
   local -a keys

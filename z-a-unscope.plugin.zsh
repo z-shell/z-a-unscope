@@ -1,5 +1,7 @@
-# Copyright (c) 2019 Sebastian Gniazdowski
-# Copyright (c) 2021 Z-Shell ZI Contributors
+# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
+# vim: ft=zsh sw=2 ts=2 et
+#
+# Copyright (c) 2021 Z-Shell Community
 
 # Get $0 according to the Zsh Plugin Standard:
 # https://z.digitalclouds.dev/community/zsh_plugin_standard#zero-handling
@@ -20,12 +22,12 @@ autoload -Uz →za-unscope-before-load-handler →za-unscope-scope-cmd-help-hand
 →za-unscope-scope-cmd .za-scope-dynamic .za-unscope-list-mappings
 
 # An empty stub to fill the help handler fields
-→za-unscope-help-null-handler() { :; }
+→za-unscope-null-handler() { :; }
 
 # The unscoping-support hook.
 @zi-register-annex "z-a-unscope" hook:before-load-5 \
   →za-unscope-before-load-handler \
-  →za-unscope-help-null-handler "dynamic-unscope''|ghapi" # New ices
+  →za-unscope-null-handler "dynamic-unscope''|ghapi" # New ices
 
 # The subcommand `scope'.
 @zi-register-annex "z-a-unscope" subcommand:scope \
