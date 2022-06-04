@@ -76,9 +76,9 @@
     if (( ibshow_messages )) {
       (($+functions[.zi-two-paths])) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
       .zi-any-colorify-as-uspl2 $ICE[teleid]
-      +zi-message "{annex}unscope-annex{ehi}:{rst} {msg}Matched the key:" \
-      "{meta}$id {ehi}→{rst} $REPLY" \
-      "{msg}({meta2}$tpe_map[$object_data[2]]{msg}).{rst}"
+      +zi-message "{annex}unscope-annex{ehi}:{rst} {msg}Matched the key{ehi}:{rst}" \
+      "{id-as}$id {ehi}→{rst} $REPLY" \
+      "{msg}({obj2}$tpe_map[$object_data[2]]{msg}){rst}"
     }
   }
   return 0
