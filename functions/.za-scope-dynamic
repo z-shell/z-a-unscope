@@ -4,6 +4,7 @@
 # Copyright (c) 2021 Z-Shell Community
 
 .za-scope-dynamic() {
+
   builtin emulate -LR zsh ${=${options[xtrace]:#off}:+-o xtrace}
   builtin setopt extendedglob warncreateglobal typesetsilent noshortloops rcquotes
 
@@ -23,7 +24,7 @@
 
   (( $+functions[.zi-two-paths] )) || builtin source ${ZI[BIN_DIR]}/lib/zsh/side.zsh
 
-  reply=( ${(f)"$($zi_annex_unscope[repo-dir]/ghquery "$name")"} )
+  reply=( ${(f)"$($zi_annex_unscope[repo-dir]/functions/ghquery "$name")"} )
   if [[ -n $reply && ${#reply} -gt 0 ]] {
     if [[ $reply[1] == (#b)([0-9]##):\ (*) ]] {
       forks=$match[1] id=$match[2]

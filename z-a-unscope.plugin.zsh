@@ -11,6 +11,11 @@
 typeset -gA zi_annex_unscope
 zi_annex_unscope[0]="$0" zi_annex_unscope[repo-dir]="${0:h}"
 
+# https://z.digitalclouds.dev/community/zsh_plugin_standard#funtions-directory
+if [[ $PMSPEC != *f* ]] {
+  fpath+=( "${0:h}/functions" )
+}
+
 # Standard Plugins Hash
 # https://z.digitalclouds.dev/community/zsh_plugin_standard#standard-plugins-hash
 typeset -gA Plugins

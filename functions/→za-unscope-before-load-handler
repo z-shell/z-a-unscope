@@ -74,7 +74,7 @@
 
     # Debug message.
     if (( ibshow_messages )) {
-      (($+functions[.zi-two-paths])) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
+      (($+functions[.zi-two-paths])) || builtin source ${ZI[BIN_DIR]}/lib/zsh/side.zsh
       .zi-any-colorify-as-uspl2 $ICE[teleid]
       +zi-message "{annex}unscope-annex{ehi}:{rst} {msg}Matched the key{ehi}:{rst}" \
       "{id-as}$id {ehi}→{rst} $REPLY" \
