@@ -8,12 +8,23 @@ repo:
     name: z-a-unscope
 lint:
   linters:
+    - name: zsh-n
+      files: [zsh]
+      type: pass_fail
+      command: [zsh, -c, "zsh -n ${target} 2>&1"]
+      success_codes: [0, 1]
+      environment:
+        - name: PATH
+          list: ["${env.PATH}"]
     - name: markdownlint
       command: [markdownlint, -q, --config, .github/.markdownlint.yaml, "${target}"]
       direct_configs: [.github/.markdownlint.yaml]
   enabled:
+    - zsh-n@1.0
     - actionlint@1.6.13
     - gitleaks@8.8.7
+    - hadolint@2.10.0
     - markdownlint@0.31.1
     - prettier@2.6.2
+    - shellcheck@0.8.0
     - shfmt@3.5.0
