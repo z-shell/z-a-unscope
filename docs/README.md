@@ -20,16 +20,9 @@ Simply load as a regular plugin, i.e.:
 ```shell
 zi light-mode for z-shell/z-a-unscope
 ```
- 
+
 It should be done possibly early in the `zshrc`, as otherwise the preceding `zi` calls will not have the unscoped IDs resolved.
 
 ---
 
 This repository is compatible with [ZI](https://github.com/z-shell/zi)
-
-
-
-
-
-
-
