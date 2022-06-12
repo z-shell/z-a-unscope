@@ -1,6 +1,6 @@
 version: 0.1
 cli:
-  version: 0.13.0-beta
+  version: 0.13.1-beta
 repo:
   repo:
     host: github.com
@@ -19,8 +19,9 @@ lint:
     - name: markdownlint
       command: [markdownlint, -q, --config, .github/.markdownlint.yaml, "${target}"]
       direct_configs: [.github/.markdownlint.yaml]
+  disabled:
+    - zsh-n
   enabled:
-    - zsh-n@1.0
     - actionlint@1.6.13
     - gitleaks@8.8.7
     - hadolint@2.10.0
