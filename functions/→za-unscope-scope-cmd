@@ -1,3 +1,4 @@
+#autoload
 # -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
 # vim: ft=zsh sw=2 ts=2 et
 #
@@ -13,12 +14,10 @@
   autoload -Uz is-at-least
   local is_58
   is-at-least 5.8 && is_58=1
-
   integer retval
 
   [[ $1 == scope ]] && { shift; integer eas_scope=1; }
   integer ibdebug_ice=$+ICE[debug]
-
   # -D - clear out the recognized options
   # -E - allow mixing of options and non-options
   # -M - allow private arrays for the options
@@ -30,30 +29,25 @@
     -reply-ony=reply_only r=reply_only -msg=msg m=msg \
     -type=type t=type h=help -help=help -list=list l=list || retval=1
     if [[ $retval -gt 0 || $1 = -* ]] {
-      +zi-message "{annex}unscope-annex{ehi}:{rst} {msg}Incorrect options" \
-      "given${${(M)1:#-*}:+ "(bad option: {ehi}$1{rst}{msg})"}" \
-      "Usage:{rst}{nl}"
+      +zi-message "{annex}unscope-annex{ehi}:{rst} {auto}Incorrect options" \
+      "given${${(M)1:#-*}:+ "(bad option{ehi}: {auto}$1)"} Usage{ehi}:{rst}{nl}"
       help=( -h ) retval=1
     }
-
   local id=${${1#@}%%(///|//|/)}
   if [[ -z $id && ${#help} -eq 0 && ${#list} -eq 0 ]] {
-    +zi-message "{annex}unscope-annex{ehi}:{rst}{msg} Missing the ID to (un)scope. Usage:{rst}{nl}"
+    +zi-message "{annex}unscope-annex{ehi}: {auto}Missing the ID to (un)scope. Usage{ehi}:{rst}{nl}"
     help=( -h ) retval=1
   }
-
   # --help/-h
   if (( ${#help} )) {
     →za-unscope-scope-cmd-help-handler
     return retval
   }
-
   # --list/-l
   if (( ${#list} )) {
     .za-unscope-list-mappings
     return $?
   }
-
   integer ibexisted
   local new_teleid_data
   local -a reply
@@ -89,11 +83,9 @@
   } else {
     [[ -n $new_teleid_data ]] && integer from_disk=1
   }
-
   if (( !${#reply_only} )) {
     if [[ -n $new_teleid_data ]] {
-      (($+functions[.zi-two-paths])) || builtin source $ZI[BIN_DIR]/lib/zsh/side.zsh
-
+      (($+functions[.zi-two-paths])) || builtin source ${ZI[BIN_DIR]}/lib/zsh/side.zsh
       local -a object_data
       object_data=( "${(@Q)${(@z)new_teleid_data}}" )
       .zi-any-colorify-as-uspl2 "$object_data[1]"
@@ -101,14 +93,12 @@
       (( from_disk )) && local msg_bit=" (stored {term}GH-API{msg})"
       (( from_static )) && local msg_bit=" ({term}static map{msg})"
 
-      +zi-message "{annex}unscope-annex{ehi}:{rst} {msg}The key{ehi}:{rst}" \
+      +zi-message "{annex}unscope-annex{ehi}:{rst} The key{ehi}:{rst}" \
       "{data}$id{msg} matched$msg_bit to{ehi}:{rst} $REPLY{msg}{rst}"
     } else {
-      +zi-message "{annex}unscope-annex{ehi}:{rst} {msg}Didn't find any match" \
-      "for the given key{ehi}:{rst} {data}$id{msg}{rst}"
+      +zi-message "{annex}unscope-annex{ehi}: {auto}Didn't find any match for the given key{ehi}:{rst} {data}$id{msg}{rst}"
     }
   }
-
   # Enable the messages in the possible outer
   # caller (i.e.: the before-load hook).
   if (( ibexisted == 0 )) {
@@ -119,7 +109,6 @@
     # (to not have it propagated after a direct call).
     zi_annex_unscope[enable-output]=0
   }
-
   REPLY=${${type:+$new_teleid_data}:-${new_teleid_data%%\ ##<->}}
   [[ -n $REPLY ]]
 }
