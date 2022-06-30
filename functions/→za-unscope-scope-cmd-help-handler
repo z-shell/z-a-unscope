@@ -1,16 +1,14 @@
+#autoload
 # -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
 # vim: ft=zsh sw=2 ts=2 et
 #
 # Copyright (c) 2021 Z-Shell Community
 
-→za-unscope-scope-cmd-help-handler() {
-  +zi-message "—— {annex}scope{nl}" \
-  "{tab}{opt}[-l]{rst}{msg} – List the static-mappings database{rst}{nl}" \
-  "{tab}{opt}[-n]{rst}{msg} – No internet (unable to query GitHub API, only static mapping is searched){rst}{nl}" \
-  "{tab}{opt}[-r]{rst}{msg} – No stdout, only set {opt}\$REPLY{rst}{nl}" \
-  "{tab}{opt}[-m]{rst}{msg} – Extended messages on {opt}GitHub API{rst} queries{nl}" \
-  "{tab}{opt}[-t]{rst}{msg} – Append the object-type ({data2}0{ehi}→{rst}{msg}plugin or {data2}1{ehi}→{rst}{msg}snippet) to the {opt}\$REPLY{rst}{nl}" \
-  "{tab}{opt}[-h]{rst}{msg} – This message{rst}{nl}" \
-  "{tab}{info3}ID{ehi}:{rst} Short ID of plugin{rst}{nl}"
-  return 0
-}
++zi-message "{auto} —— scope [ -l | -n | -r | -m | -t | -h ] [{info3} short name{rst} ]{nl}{nl}" \
+  "{auto}[ -l ] —— List the 'static-mappings' database and {info3} short names{rst}{nl}" \
+  "{auto}[ -n ] —— No internet (unable to query GitHub API, only 'static-mapping' is searched){nl}" \
+  "{auto}[ -r ] —— No stdout, only set {var} \$REPLY{nl}" \
+  "{auto}[ -m ] —— Extended messages on {opt} GitHub API{rst} queries{nl}" \
+  "{auto}[ -t ] —— Append the 'object-type' ({data2}0{ehi}→{rst}{msg}plugin or {data2}1{ehi}→{rst}{msg}snippet) to the {var}\$REPLY{nl}" \
+  "{auto}[ -h ] —— This message{nl}"
+return 0
