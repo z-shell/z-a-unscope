@@ -1,5 +1,9 @@
+#autoload
+# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
+# vim: ft=zsh sw=2 ts=2 et
+#
 # Copyright (c) 2021 Z-Shell Community
-
+#
 # An example of type-agnostic script/function, i.e.: the file can be run as a +x
 # script or as an autoload function.
 
