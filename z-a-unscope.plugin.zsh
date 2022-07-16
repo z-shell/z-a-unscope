@@ -82,7 +82,7 @@ zi_annex_unscope_mappings=(
   # Prezto utility
   "23.  utility"			"PZTM::utility 1"
   "24.  util"				"PZTM::utility 1"
-  "25.  pzcomp"     "PZTM::completion"
+  "25.  pzcomp"     "PZTM::completion 1"
   # F-Sy-H
   "26.  F-Sy-H"	  "z-shell/F-Sy-H 0"
   "27.  f-sy-h"   "z-shell/F-Sy-H 0"
