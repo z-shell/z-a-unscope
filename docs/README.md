@@ -1,8 +1,8 @@
 <table align="center"><tr><td>
 <h1 align="center">
   <p><a href="https://github.com/z-shell/zi">
-    <img align="center" src="https://github.com/z-shell/zi/raw/main/docs/images/logo.svg" alt="Logo" width="60px" height="60px" /></a>
-    ❮ ZI ❯ Annex - Unscope </p>
+    <img align="center" src="https://github.com/z-shell/zi/raw/main/docs/images/logo.png" alt="Logo" width="60px" height="60px" /></a>
+    ❮ Zi ❯ Annex - Unscope </p>
 </h1>
  <h2 align="center">
   <p> An annex delivers capability install plugins without specifying the GitHub user name.</p>
@@ -11,9 +11,9 @@
   <p><img align="center" src="https://github.com/z-shell/z-a-unscope/raw/main/docs/images/scope.png" alt="zi annex unscope subcommand" width="100%" height="auto" /></p>
 </td></tr></table><hr />
 
-## 💡 Wiki: [unscope](https://z.digitalclouds.dev/ecosystem/annexes/unscope) - [annexes](https://z.digitalclouds.dev/ecosystem/annexes)
+## 💡 Wiki: [unscope](https://wiki.zshell.dev/ecosystem/annexes/unscope) - [annexes](https://wiki.zshell.dev/ecosystem/-annexes)
 
-# Install with [ZI](https://github.com/z-shell/zi)
+# Install with [Zi](https://github.com/z-shell/zi)
 
 Simply load as a regular plugin, i.e.:
 
@@ -25,4 +25,6 @@ It should be done possibly early in the `zshrc`, as otherwise the preceding `zi`
 
 ---
 
-This repository is compatible with [ZI](https://github.com/z-shell/zi)
+> **Note**
+>
+> This repository is compatible with [Zi](https://github.com/z-shell/zi)
